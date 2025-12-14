@@ -44,7 +44,7 @@ const HCMC: React.FC = () => {
     {
       title: t('hcmc.infrastructure'),
       description: t('hcmc.infrastructureDesc'),
-      image: 'https://images.unsplash.com/photo-1567449303078-57ad995bd329?w=800',
+      image: '/hatang.jpg',
     },
     {
       title: t('hcmc.population'),
