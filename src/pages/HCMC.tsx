@@ -16,17 +16,17 @@ const HCMC: React.FC = () => {
     {
       icon: Users,
       label: language === 'vi' ? 'Dân số' : 'Population',
-      value: '10+ triệu',
+      value: language === 'vi' ? '10+ triệu' : '10+ million',
     },
     {
       icon: TrendingUp,
       label: 'GDP',
-      value: '67 tỷ USD',
+      value: language === 'vi' ? '67 tỷ USD' : '67 billion USD',
     },
     {
       icon: Plane,
       label: language === 'vi' ? 'Sân bay' : 'Airport',
-      value: 'Tân Sơn Nhất',
+      value: language === 'vi' ? 'Tân Sơn Nhất' : 'Tan Son Nhat',
     },
   ];
 
