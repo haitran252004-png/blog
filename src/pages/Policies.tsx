@@ -34,6 +34,7 @@ const Policies: React.FC = () => {
         : 'Decree 31/2021/ND-CP guiding Investment Law',
       date: '26/03/2021',
       type: language === 'vi' ? 'Nghị định' : 'Decree',
+      url: 'https://vanban.chinhphu.vn/?pageid=27160&docid=203063', 
     },
     {
       id: 4,
@@ -42,6 +43,7 @@ const Policies: React.FC = () => {
         : 'Decree 01/2021/ND-CP on enterprise registration',
       date: '04/01/2021',
       type: language === 'vi' ? 'Nghị định' : 'Decree',
+      url: 'https://vanban.chinhphu.vn/?pageid=27160&docid=202306',
     },
     {
       id: 5,
@@ -50,6 +52,7 @@ const Policies: React.FC = () => {
         : 'Circular 03/2021/TT-BKHDT guiding foreign investment',
       date: '09/04/2021',
       type: language === 'vi' ? 'Thông tư' : 'Circular',
+      url: 'https://thuvienphapluat.vn/van-ban/Dau-tu/Thong-tu-03-2021-TT-BKHDT-mau-van-ban-thuc-hien-thu-tuc-dau-tu-tai-Viet-Nam-469601.aspx',
     },
   ];
 
@@ -79,6 +82,13 @@ const Policies: React.FC = () => {
         : 'Training cost support for human resources in high-tech projects.',
     },
   ];
+
+  // Hàm xử lý mở link an toàn
+  const handleOpenLink = (url?: string) => {
+    if (url) {
+      window.open(url, '_blank');
+    }
+  };
 
   return (
     <>
@@ -110,7 +120,11 @@ const Policies: React.FC = () => {
               {documents.map((doc, index) => (
                 <div
                   key={doc.id}
-                  className="flex items-center justify-between p-4 bg-card rounded-xl border border-border hover:shadow-md transition-shadow animate-slide-up"
+                  // --- SỬA ĐỔI TẠI ĐÂY ---
+                  // 1. Thêm sự kiện onClick để mở link
+                  onClick={() => handleOpenLink(doc.url)}
+                  // 2. Thêm 'cursor-pointer' để hiện bàn tay khi di chuột vào
+                  className="flex items-center justify-between p-4 bg-card rounded-xl border border-border hover:shadow-md transition-shadow animate-slide-up cursor-pointer group"
                   style={{ animationDelay: `${index * 0.05}s` }}
                 >
                   <div className="flex items-center gap-4">
@@ -118,7 +132,8 @@ const Policies: React.FC = () => {
                       <FileText className="w-6 h-6 text-primary" />
                     </div>
                     <div>
-                      <h3 className="font-medium text-foreground">{doc.title}</h3>
+                      {/* Thêm group-hover để đổi màu chữ khi di chuột vào */}
+                      <h3 className="font-medium text-foreground group-hover:text-blue-600 transition-colors">{doc.title}</h3>
                       <div className="flex items-center gap-3 mt-1 text-sm text-muted-foreground">
                         <span>{doc.type}</span>
                         <span>•</span>
@@ -130,7 +145,15 @@ const Policies: React.FC = () => {
                     <Button variant="ghost" size="icon">
                       <Download className="w-4 h-4" />
                     </Button>
-                    <Button variant="ghost" size="icon">
+                    <Button 
+                        variant="ghost" 
+                        size="icon"
+                        // Gắn thêm sự kiện vào nút này cho chắc chắn
+                        onClick={(e) => {
+                            e.stopPropagation(); // Ngăn sự kiện trùng lặp
+                            handleOpenLink(doc.url);
+                        }}
+                    >
                       <ExternalLink className="w-4 h-4" />
                     </Button>
                   </div>
