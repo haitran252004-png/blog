@@ -16,8 +16,7 @@ const Policies: React.FC = () => {
         : 'Investment Law 2020 (Law No. 61/2020/QH14)',
       date: '17/06/2020',
       type: language === 'vi' ? 'Luật' : 'Law',
-      url: language === 'vi' 
-      ? 'https://vanban.chinhphu.vn/?pageid=27160&docid=200358'
+      url: 'https://vanban.chinhphu.vn/?pageid=27160&docid=200358',
     },
     {
       id: 2,
@@ -26,8 +25,7 @@ const Policies: React.FC = () => {
         : 'Enterprise Law 2020 (Law No. 59/2020/QH14)',
       date: '17/06/2020',
       type: language === 'vi' ? 'Luật' : 'Law',
-      url: language === 'vi'
-      ? 'https://vanban.chinhphu.vn/?pageid=27160&docid=200357'
+      url: 'https://vanban.chinhphu.vn/?pageid=27160&docid=200357',
     },
     {
       id: 3,
